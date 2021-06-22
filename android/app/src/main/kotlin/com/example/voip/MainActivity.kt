@@ -1,4 +1,4 @@
-package com.example.voip
+package id.majapahit.voip
 
 import io.flutter.embedding.android.FlutterActivity
 
