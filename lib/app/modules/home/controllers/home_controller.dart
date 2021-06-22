@@ -17,6 +17,7 @@ class HomeController extends GetxController {
   String appId = '270391cbd8554b378db4a8a4465f33de';
   String token =
       '006270391cbd8554b378db4a8a4465f33deIACD3wWb1DRLh+tTcXLIztLaCaBmcJ5jg6drg/CvGRnz0WRiI5AAAAAAIgDmAAIAPdDJYAQAAQDNjMhgAwDNjMhgAgDNjMhgBADNjMhg';
+  String status = 'iddle';
 
   bool isJoined = false,
       openMicrophone = true,
@@ -95,6 +96,8 @@ class HomeController extends GetxController {
   }
 
   joinCall() async {
+    this.status = '....';
+    update();
     // Join channel with channel name as 123
     await engine.joinChannel(tokenCon.text, channelCon.text, null, 0);
 
@@ -103,10 +106,17 @@ class HomeController extends GetxController {
     await engine.setClientRole(ClientRole.Broadcaster);
     await engine.enableLocalAudio(openMicrophone);
     await engine.setEnableSpeakerphone(enableSpeakerphone);
+    this.status = 'connected';
+    update();
   }
 
   leaveCall() async {
+    this.status = '...';
+    update();
     await engine.leaveChannel();
+
+    this.status = 'iddle';
+    update();
     print('success');
   }
 

@@ -37,6 +37,13 @@ class _HomeViewState extends State<HomeView> {
               child: Text('LEAVE'),
               onPressed: controller.leaveCall,
             ),
+            GetBuilder<HomeController>(
+              init: HomeController(),
+              initState: (_) {},
+              builder: (_) {
+                return Text(controller.status);
+              },
+            ),
           ],
         ),
       ),
